@@ -26,7 +26,7 @@ const Navbar = () => {
           to="/"
           className="flex items-center gap-3 hover:scale-105 hover:drop-shadow-md transition duration-300"
         >
-          <img src="/lnt.png" alt="Logo" className="w-20 h-20 object-contain" />
+          <img src="/lnt.png" alt="Logo" className="w-16 h-16 object-contain" />
           <span className="text-2xl font-extrabold text-gray-800 tracking-tight">
             {/* LnT Homes */}
           </span>
