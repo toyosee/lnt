@@ -11,6 +11,8 @@ import AboutUs from './components/pages/About.jsx';
 import Contact from './components/pages/Contact.jsx';
 import PrivacyPolicy from './components/pages/PrivacyPolicy.jsx';
 import FAQ from './components/pages/Faq.jsx';
+import Login from './components/pages/Login.jsx'
+import Signup from './components/pages/Signup.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +25,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="contact" element={<Contact />} />
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="faqs" element={<FAQ />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Signup />} />
           {/* Add other routes as needed */}
         </Route>
       </Routes>
