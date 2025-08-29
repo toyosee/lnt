@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/lnt/*"
+  to = "/lnt/index.html"
+  status = 200
