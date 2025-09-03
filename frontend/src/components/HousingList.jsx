@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
-import { FaBed, FaBath, FaMapMarkerAlt, FaMoneyBillWave, FaSearch, FaSortAmountDown, FaMicrophone } from 'react-icons/fa';
+import {
+  FaBed,
+  FaBath,
+  FaMapMarkerAlt,
+  FaMoneyBillWave,
+  FaSearch,
+  FaSortAmountDown,
+  FaMicrophone,
+  FaHome
+} from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faLocationDot} from '@fortawesome/free-solid-svg-icons';
 import HousingModal from './HousingModal.jsx';
@@ -8,6 +17,7 @@ import { Link } from 'react-router-dom'; // Make sure this is at the top
 
 
 const HousingList = () => {
+  const isLoggedIn = !!localStorage.getItem('lntToken');
   const [houses, setHouses] = useState([]);
   const [filteredHouses, setFilteredHouses] = useState([]);
   const [selectedHouse, setSelectedHouse] = useState(null);
@@ -241,7 +251,57 @@ return (
         </button>
       </div>
 
-      <HousingModal isOpen={isModalOpen} onClose={closeModal} house={selectedHouse} />
+      {isModalOpen && (
+        isLoggedIn ? (
+          <HousingModal isOpen={isModalOpen} onClose={closeModal} house={selectedHouse} />
+        ) : (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm transition-opacity duration-300">
+            <div className="bg-white rounded-xl shadow-2xl overflow-hidden max-w-lg w-full animate-fadeIn">
+              {/* House Image Preview */}
+              {selectedHouse?.image && (
+                <img
+                  src={selectedHouse.image}
+                  alt={selectedHouse.title}
+                  className="w-full h-48 object-cover"
+                />
+              )}
+
+              {/* Modal Content */}
+              <div className="p-6 text-center">
+                <h2 className="text-2xl font-bold text-gray-800 mb-3">See More About This Property</h2>
+                <p className="text-gray-600 mb-6">
+                  To view full details, please log in or create an account.
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-4 mb-4">
+                  <Link
+                    to="/login"
+                    className="flex items-center gap-2 px-5 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-700 transition duration-200"
+                  >
+                    <FaBed className="text-white" />
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="flex items-center gap-2 px-5 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition duration-200"
+                  >
+                    <FaHome className="text-white" />
+                    Register
+                  </Link>
+                </div>
+
+                <button
+                  onClick={closeModal}
+                  className="text-sm text-gray-500 hover:text-gray-700 hover:underline transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+      )}
     </div>
   );
 };

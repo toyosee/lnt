@@ -14,10 +14,10 @@ const HeroBanner = () => (
     <h1 className="text-4xl font-bold mb-4 text-white-900">Find Your Next Home or Investment</h1>
     <p className="mb-6 text-lg text-white-800">Smart tools for landlords, tenants, agents, and investors.</p>
     <div className="flex justify-center gap-4 flex-wrap">
-      <Link to="/get-started">
+      <Link to="/register">
         <button className="bg-black text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-black">Get Started</button>
       </Link>
-      <Link to="/list-property">
+      <Link to="/login">
         <button className="bg-black text-white px-6 py-2 rounded-full font-semibold hover:bg-white hover:text-black">List Property</button>
       </Link>
       <Link to="/list-property">
